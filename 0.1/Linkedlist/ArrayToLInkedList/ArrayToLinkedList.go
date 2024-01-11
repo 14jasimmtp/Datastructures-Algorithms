@@ -36,7 +36,6 @@ func (list *LinkedList) Display() {
 }
 
 func main() {
-	// Creating a linked list
 	myList := LinkedList{}
 	myList.ArrayToLinkedList([]int{1,3,4,6,7,3,4})
 	myList.Display()
