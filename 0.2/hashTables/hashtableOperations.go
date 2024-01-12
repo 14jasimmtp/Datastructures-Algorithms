@@ -13,12 +13,13 @@ type bucket struct {
 
 type bucketNode struct {
 	key      string
+	value string
 	nextNode *bucketNode
 }
 
-func (h *HashTable) Insert(key string) {
+func (h *HashTable) Insert(key,value string) {
 	index := hash(key)
-	h.array[index].insert(key)
+	h.array[index].insert(key,value)
 }
 
 func (h *HashTable) Search(key string) bool {
@@ -33,9 +34,9 @@ func (h *HashTable) Delete(key string) {
 
 }
 
-func (b *bucket) insert(k string) {
+func (b *bucket) insert(k,value string) {
 	if !b.search(k) {
-		newNode := &bucketNode{key: k}
+		newNode := &bucketNode{key: k,value: value}
 		newNode.nextNode = b.head
 		b.head = newNode
 	} else {
@@ -88,19 +89,10 @@ func Init() *HashTable {
 
 func main() {
 	testHashtable := Init()
-	list := []string{
-		"ERIC",
-		"KENNY",
-		"KYLE",
-		"STAN",
-		"RANDY",
-		"BUTTERS",
-		"TOKEN",
-	}
-	for _, v := range list {
-		testHashtable.Insert(v)
-	}
-	testHashtable.Delete("STAN")
+	
+		testHashtable.Insert("django","malayalam")
+	
+	
 	fmt.Println(testHashtable.Search("STAN"))
 	fmt.Println(testHashtable.Search("KYLE"))
 

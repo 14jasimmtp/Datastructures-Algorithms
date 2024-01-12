@@ -4,6 +4,7 @@ import "fmt"
 
 type Stack struct{
 	data []int
+	
 }
 func main(){
 	stack:=&Stack{}
