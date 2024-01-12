@@ -4,9 +4,9 @@ import "fmt"
 
 func main() {
 	Array := []int{9, 3, 2, 5, 6, 3, 4, 72}
-	QuickSort(Array,0,len(Array)-1)
+	res:=quickSort(Array)
 	fmt.Print("Sorted array: ")
-	for _, v := range Array {
+	for _, v := range res {
 		fmt.Print(v, " ")
 	}
 	fmt.Println()
@@ -35,4 +35,27 @@ func Partition(arr []int, low, high int) int {
 	arr[leftIndex], arr[low] = arr[low], arr[leftIndex]
 
 	return leftIndex
+}
+
+
+func quickSort(arr []int) []int{
+
+	if len(arr) < 2{
+		return arr
+	}
+
+	pivot:=arr[(len(arr)-1)/2]
+
+	var left,right []int
+
+	for i:=1;i<len(arr);i++{
+		
+		if arr[i] < pivot{
+			left = append(left,arr[i])
+		} else{
+			right = append(right,arr[i])
+		}
+	}
+
+	return append(append(quickSort(left),pivot), quickSort(right)...)
 }
