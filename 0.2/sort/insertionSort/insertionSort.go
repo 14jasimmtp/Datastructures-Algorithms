@@ -18,7 +18,7 @@ func insertionSort(arr []int){
 
 		j:=i-1
 		for j>=0 && arr[j] > current{
-			arr[j+1],arr[j]=arr[j],arr[j+1]
+			arr[j+1] = arr[j]
 			j--
 		}
 		arr[j+1] = current

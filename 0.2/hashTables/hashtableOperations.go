@@ -1,6 +1,7 @@
 package main
 
 import "fmt"
+
 const arraySize = 7
 
 type HashTable struct {
@@ -13,13 +14,13 @@ type bucket struct {
 
 type bucketNode struct {
 	key      string
-	value string
+	value    string
 	nextNode *bucketNode
 }
 
-func (h *HashTable) Insert(key,value string) {
+func (h *HashTable) Insert(key, value string) {
 	index := hash(key)
-	h.array[index].insert(key,value)
+	h.array[index].insert(key, value)
 }
 
 func (h *HashTable) Search(key string) bool {
@@ -34,9 +35,9 @@ func (h *HashTable) Delete(key string) {
 
 }
 
-func (b *bucket) insert(k,value string) {
+func (b *bucket) insert(k, value string) {
 	if !b.search(k) {
-		newNode := &bucketNode{key: k,value: value}
+		newNode := &bucketNode{key: k, value: value}
 		newNode.nextNode = b.head
 		b.head = newNode
 	} else {
@@ -89,11 +90,10 @@ func Init() *HashTable {
 
 func main() {
 	testHashtable := Init()
-	
-		testHashtable.Insert("django","malayalam")
-	
-	
-	fmt.Println(testHashtable.Search("STAN"))
+
+	testHashtable.Insert("django", "malayalam")
+
+	fmt.Println(testHashtable.Search("django"))
 	fmt.Println(testHashtable.Search("KYLE"))
 
 }
