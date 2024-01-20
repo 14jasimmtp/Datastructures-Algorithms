@@ -44,6 +44,7 @@ func (g *graph) BFS(startVertex any) {
 	queue := []any{}
 	visited := make(map[any]bool)
 	queue = append(queue, startVertex)
+	visited[startVertex] = true
 
 	for len(queue) > 0 {
 		vertex := queue[0]
@@ -51,7 +52,7 @@ func (g *graph) BFS(startVertex any) {
 		fmt.Print(" ", vertex)
 
 		for _, neighbours := range g.edges[vertex] {
-			if visited[neighbours] == false {
+			if !visited[neighbours] {
 				visited[neighbours] = true
 				queue = append(queue, neighbours)
 			}
@@ -73,5 +74,7 @@ func main() {
 	gra.addEdge(5, 8)
 	gra.addEdge("hg", 4.43)
 	gra.addEdge(8, 4.43)
-	gra.BFS(5)
+	gra.addEdge(3,"hg")
+	gra.BFS(3)
+	gra.print()
 }
