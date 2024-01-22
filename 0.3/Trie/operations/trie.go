@@ -2,7 +2,6 @@ package main
 
 import "fmt"
 
-
 type Node struct {
 	Children map[string]*Node
 	IsEnd    bool
@@ -14,9 +13,9 @@ type Trie struct {
 
 func (t *Trie) insert(s string) {
 	current := t.Root
-	for i:=0;i<len(s);i++ {
+	for i := 0; i < len(s); i++ {
 
-		char:= string(s[i])
+		char := string(s[i])
 
 		if current.Children[char] == nil {
 
@@ -31,7 +30,7 @@ func (t *Trie) insert(s string) {
 func (t *Trie) search(s string) bool {
 	current := t.Root
 
-	for i := 0;i<len(s);i++ {
+	for i := 0; i < len(s); i++ {
 		char := string(s[i])
 		if current.Children[char] == nil {
 			return false
@@ -71,7 +70,6 @@ func (t *Trie) containsPrefix(prefix string, word *[]string, current *Node) {
 		t.containsPrefix(prefix+char, word, child)
 	}
 }
-
 
 func main() {
 	t := Trie{

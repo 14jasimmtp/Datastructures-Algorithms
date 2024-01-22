@@ -25,7 +25,7 @@ func (g *graph) addEdge(vertex1 any, vertex2 any) {
 
 func (g *graph) print() {
 	for key, value := range g.edges {
-		fmt.Printf("%v : %v",key,value)
+		fmt.Printf("%v : %v", key, value)
 		fmt.Println()
 	}
 }
@@ -39,12 +39,12 @@ func (g *graph) contains(value any) bool {
 	return false
 }
 
-func (g *graph) BFS(){
-	
+func (g *graph) BFS() {
+
 }
 
-func main(){
-	gra:=graph{
+func main() {
+	gra := graph{
 		edges: make(map[any][]any),
 	}
 
@@ -53,9 +53,8 @@ func main(){
 	gra.addVertex(3)
 	gra.addVertex("hg")
 	gra.addVertex(4.43)
-	gra.addEdge(5,8)
-	gra.addEdge("hg",4.43)
-	gra.addEdge(8,4.43)
+	gra.addEdge(5, 8)
+	gra.addEdge("hg", 4.43)
+	gra.addEdge(8, 4.43)
 	gra.print()
 }
-

@@ -58,9 +58,6 @@ func (t *BST) Closest(root *Tree, key float64) float64 {
 	return closest
 }
 
-// func (t *BST) contains(key int) bool{
-// 	if t.root
-// }
 
 func main() {
 	tree := BST{}

@@ -26,37 +26,44 @@ func (heap *Heap) HeapifyUp(index int) {
 	heap.HeapifyUp(parent)
 }
 
-func (heap *Heap) HeapifyDown(index int){
+func (heap *Heap) HeapifyDown(index int) {
 	for {
-		left:=(2*index)+1
-		right:=2*index+1
-		largest := index
+		left := (2 * index) + 1
+		right := 2*index + 1
+		minIndex := index
 
-		if left < len(heap.Arr) && heap.Arr[left] > heap.Arr[largest]{
-			largest = left
+		if left < len(heap.Arr) && heap.Arr[left] < heap.Arr[minIndex] {
+			minIndex = left
 		}
 
-		if right < len(heap.Arr) && heap.Arr[right] > heap.Arr[largest]{
-			largest = right
+		if right < len(heap.Arr) && heap.Arr[right] < heap.Arr[minIndex] {
+			minIndex = right
+		}
+
+		if minIndex != index{
+			heap.Arr[minIndex],heap.Arr[index] = heap.Arr[index],heap.Arr[minIndex]
+			heap.HeapifyDown(minIndex)
 		}
 	}
+
+	
 }
 
-func (heap *Heap) remove(val int) int{
-	if len(heap.Arr) == 0{
+func (heap *Heap) remove(val int) int {
+	if len(heap.Arr) == 0 {
 		return 0
 	}
 
-	top:=heap.Arr[0]
-	heap.Arr[0]=heap.Arr[len(heap.Arr)-1]
+	top := heap.Arr[0]
+	heap.Arr[0] = heap.Arr[len(heap.Arr)-1]
 	heap.HeapifyDown(0)
 
-	return top 
+	return top
 }
 
 func main() {
 	heap := Heap{}
-	arr := []int{8,2,4,51,3,23,5,89}
+	arr := []int{8, 2, 4, 51, 3, 23, 5, 89}
 
 	for _, arrr := range arr {
 		heap.Insert(arrr)

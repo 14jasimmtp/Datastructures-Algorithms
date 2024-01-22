@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-
 )
 
 type graph struct {
@@ -42,21 +41,21 @@ func (g *graph) contains(value any) bool {
 	return false
 }
 
-func (g *graph) DFS(val any){
-	visited:=make(map[any]bool)
-	stack:=[]any{}
+func (g *graph) DFS(val any) {
+	visited := make(map[any]bool)
+	stack := []any{}
 
 	stack = append(stack, val)
 	visited[val] = true
 
-	for len(stack) > 0{
+	for len(stack) > 0 {
 		vertex := stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
 
 		fmt.Println(vertex)
 
-		for _,neighbours:=range g.edges[vertex]{
-			if !visited[neighbours]{
+		for _, neighbours := range g.edges[vertex] {
+			if !visited[neighbours] {
 				visited[neighbours] = true
 				stack = append(stack, neighbours)
 			}
@@ -77,7 +76,7 @@ func main() {
 	gra.addEdge(5, 8)
 	gra.addEdge("hg", 4.43)
 	gra.addEdge(8, 4.43)
-	gra.addEdge(3,"hg")
+	gra.addEdge(3, "hg")
 	gra.DFS(3)
 	gra.print()
 }

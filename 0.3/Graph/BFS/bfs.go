@@ -74,7 +74,7 @@ func main() {
 	gra.addEdge(5, 8)
 	gra.addEdge("hg", 4.43)
 	gra.addEdge(8, 4.43)
-	gra.addEdge(3,"hg")
+	gra.addEdge(3, "hg")
 	gra.BFS(3)
 	gra.print()
 }
